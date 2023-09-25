@@ -90,6 +90,19 @@ type Excluded = Exclude<Shapes, { kind: "square" }>;
 
 
 
+// key
+interface Dictionary<T> {
+  [key: string]: T;
+}
+
+const userScores: Dictionary<number> = {
+  alice: 100,
+  bob: 120,
+  carol: 90,
+};
+
+
+
 // key in
 type MaskType = "money" | "percent" | "number";
 
@@ -112,4 +125,15 @@ const maskProps: MaskPropsType = {
     thousandSeparator: ".",
     decimalSeparator: ",",
   },
+};
+
+
+
+// Record
+type UserRoles = Record<string, string>;
+
+const roles: UserRoles = {
+  alice: "admin",
+  bob: "editor",
+  carol: "viewer",
 };
