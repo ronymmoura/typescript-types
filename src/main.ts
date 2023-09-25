@@ -87,3 +87,29 @@ type Shapes =
     };
 
 type Excluded = Exclude<Shapes, { kind: "square" }>;
+
+
+
+// key in
+type MaskType = "money" | "percent" | "number";
+
+type MaskPropsType = { [key in MaskType]: NumericFormatProps };
+
+const maskProps: MaskPropsType = {
+  money: {
+    decimalScale: 2,
+    fixedDecimalScale: true,
+    thousandSeparator: ".",
+    decimalSeparator: ",",
+  },
+  percent: {
+    decimalSeparator: ",",
+    decimalScale: 2,
+    suffix: "%",
+    fixedDecimalScale: true,
+  },
+  number: {
+    thousandSeparator: ".",
+    decimalSeparator: ",",
+  },
+};
