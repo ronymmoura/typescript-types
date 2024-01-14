@@ -87,3 +87,29 @@ type Shapes =
     };
 
 type Excluded = Exclude<Shapes, { kind: "square" }>;
+
+
+
+// Not nulable keys
+// Most used with cva
+type Variants = {
+  variants?: "default" | "success" | "info" | "danger" | "warning" | null | undefined;
+}
+
+type NotNullableKeys<Type> = {
+  [Key in keyof Type]-?: NotNullableKeys<NonNullable<Type[Key]>>;
+};
+
+const props: { variant: NotNullableKeys<Variants> } = {
+  variant: {
+    variants: "danger"
+  }
+}
+
+const variants: { [K in typeof props.variant.variants]: any } = {
+  danger: "a",
+  default: "a",
+  success: "a",
+  info: "a",
+  warning: "a",
+};
