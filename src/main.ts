@@ -90,6 +90,57 @@ type Excluded = Exclude<Shapes, { kind: "square" }>;
 
 
 
+// key
+interface Dictionary<T> {
+  [key: string]: T;
+}
+
+const userScores: Dictionary<number> = {
+  alice: 100,
+  bob: 120,
+  carol: 90,
+};
+
+
+
+// key in
+type MaskType = "money" | "percent" | "number";
+
+type MaskPropsType = { [key in MaskType]: NumericFormatProps };
+
+const maskProps: MaskPropsType = {
+  money: {
+    decimalScale: 2,
+    fixedDecimalScale: true,
+    thousandSeparator: ".",
+    decimalSeparator: ",",
+  },
+  percent: {
+    decimalSeparator: ",",
+    decimalScale: 2,
+    suffix: "%",
+    fixedDecimalScale: true,
+  },
+  number: {
+    thousandSeparator: ".",
+    decimalSeparator: ",",
+  },
+};
+
+
+
+// Record
+type UserRoles = Record<string, string>;
+
+const roles: UserRoles = {
+  alice: "admin",
+  bob: "editor",
+  carol: "viewer",
+};
+
+
+
+
 // Not nulable keys
 // Most used with cva
 type Variants = {
